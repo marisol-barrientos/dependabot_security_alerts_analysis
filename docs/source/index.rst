@@ -1,30 +1,18 @@
 Documentation Dependabot security alerts analysis
 =================================================
 
-Introduction
-============
+Contents:
 
+.. toctree::
+   :maxdepth: 2
 
-
-Guide
-^^^^^
-
-TeacherAPI controller
-=====================
-.. automodule:: src.analysis
-   :members:
-
-TeacherAPI models
-=================
-.. automodule:: teacherAPI.models
-   :members:
-
-TeacherAPI database
-===================
-.. automodule:: teacherAPI.database
-   :members:
-
-TeacherAPI populate
-===================
-.. automodule:: teacherAPI.populate
-   :members:
+   analysis
+   db_manager
+   db_point
+   dependencies_manager
+   dependency
+   directories_manager
+   git_manager
+   helpers
+   modules
+   scripts_manager
