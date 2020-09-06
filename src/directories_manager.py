@@ -17,8 +17,7 @@ def download_file(repo, commit_hexsha, file_name):
     :param file_name: Name of the file to download.
     :type file_name: str
 
-    :return: It returns 'True' if file exists in the commit
-    and it can be downloaded, if not it returns 'False'.
+    :return: It returns 'True' if file exists in the commit and it can be downloaded, if not it returns 'False'.
     :rtype: Repo
     """
     try:

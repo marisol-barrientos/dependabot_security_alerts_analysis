@@ -11,9 +11,7 @@ def diff_in_dependencies(current_commit, previous_commit):
     :param previous_commit: Previous commit.
     :type previous_commit: Commit
 
-    :return: It returns 'True' if 'package.json', 'package-lock.json',
-    'npm-shrinkwrap.json' or 'yarn.lock' was modified in the current commit, if not
-    it will return 'False'.
+    :return: It returns 'True' if 'package.json', 'package-lock.json', 'npm-shrinkwrap.json' or 'yarn.lock' was modified in the current commit, if not it will return 'False'.
     :rtype: bool
     """
     diff_index = previous_commit.diff(current_commit)

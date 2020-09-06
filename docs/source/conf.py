@@ -32,7 +32,7 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode','sphinx_rtd_theme']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -48,15 +48,20 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api']
+MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api','src']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
 
-html_show_sourcelink = False
+
+def setup(app):
+    app.add_css_file('my_style.css')
+
+
+html_css_files = ['my_style.css']

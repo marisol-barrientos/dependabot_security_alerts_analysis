@@ -1,0 +1,147 @@
+
+~~ INFO:Reading repositories presented in '../input/repos.csv' ...
+------------------------------------------------------------------
+~~ INFO:Analyzing evolution of vulnerable dependencies from 'grimpio/website-backend'
+
+~~ INFO:Cloning 'grimpio/website-backend.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
+
+       * Commit: '096da83ab90142fed5bfd30db57a3c28282b620b'
+         - Commited date:'1580372669'
+         - Repository id: '235354561'
+         - Commit author: 'grimpio'
+         - Repo name: 'website-backend'
+         - Repo owner: 'grimpio'
+         - Total number of dependencies: 1242
+         - New vulnerabilities: 21
+         - Fixed vulnerabilities: 0
+         - Revoked vulnerabilities: 0
+         - Kept vulnerabilities: 0
+         - Total number of vulnerabilities: 21
+         - Critical severity: 0
+         - High severity: 11
+         - Moderate severity: 8
+         - Low severity: 2
+         - Dependabot configuration file: 'False'
+
+         ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
+
+       * Commit: '9007d1b9618da975112cbed8c324ce9f0f324d8e'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'de77194f7aa78c285afbb0d459b70fd98605cfcd'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'a2021545aebb56a4a88e9e37705303c37797d1e2'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'fd05e854f937ede93a8b53770e3ee3e2787c7881'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'cd1ccff426a31f8d15eab8ecc5522c54185b1197'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '2e2449205ca2aeab7c7aeedcba85530c689f12f8'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'd213922d183cf274af28b48cc27691ce6fa15c66'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'd17dcaa7df411d34ba3e39b6518a56cb8615a714'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'b7060182213d748a65e08e5d846d9fcaf6e4d776'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'dfd05a9a6f1175c093ed9f591725f32a44f9a607'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '0ba6da3bc5d1263e2ed3d9c6d87a504576f2619a'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'cc5e396a5fac9bdc18d757df895dad2302a8be64'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'ca75e63c302dd1b09033044ee45e5dbd0a9229e0'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'a846bc319b9ca64982e84c16cecf742a15d1af8b'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'f5be6d5d8eecb4d933e5e8b9b10c826c9c25dbf3'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '77f0a1a4a8f2aaea48969edf92b247f014631fc5'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'ba9a28116c617f68e91e9e42987830bf654dd4e0'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '8bd0261c419c02ea4afa80a406cbb40c078cb78b'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '00c33fa9b2a01b3d3f458da85dc79b746b6a8e37'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '95fd0aa5432571deff62c6115989e62e679ec991'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '895987781052277d4f656b43d5674107265da994'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'd46e8eb8bd11d4b13ec25cb4a630ec7ddbd988f8'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'bac602d371f5e63179ee6b7f5767945911eaf56e'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '97943b5c5f41ad41b59abea3640caa6d7fef6225'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '00a0b2d023267b05e50fbcabf805608f9698e329'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '451a71435a8ad85d860359fd651479f2fc213f4c'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '1d3b16bb77a20373e792dc3efbe9599c11b7affa'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'ea2b82b8fd01cd637aeb2e0c5805876369e5658b'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '6068d43ba7dd2596c5935ddec04c763caf9fb7f9'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'e77a1f6549cf37f7495a6f56b7d11afc2eea08c3'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: 'de1b9f24c101d5fbedc9fee9b493445e6e3c1ec4'
+         ~~ INFO:Dependencies have not changed. 
+
+       * Commit: '777b2d735ec08ab96a57943aa28f229332552146'
+         - Commited date:'1579594380'
+         - Repository id: '235354561'
+         - Commit author: 'arnaudjnn'
+         - Repo name: 'website-backend'
+         - Repo owner: 'grimpio'
+         - Total number of dependencies: 1228
+         - New vulnerabilities: 0
+         - Fixed vulnerabilities: 0
+         - Revoked vulnerabilities: 0
+         - Kept vulnerabilities: 21
+         - Total number of vulnerabilities: 21
+         - Critical severity: 0
+         - High severity: 11
+         - Moderate severity: 8
+         - Low severity: 2
+         - Dependabot configuration file: 'False'
+
+         ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
+Error: 
+<class 'KeyboardInterrupt'>
+Error: 
+
+------------------------------------------------------------------
+~~ INFO:Analyzing evolution of vulnerable dependencies from 'evanxu/huoyanyanyi'
+
+~~ INFO:Cloning 'evanxu/huoyanyanyi.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
