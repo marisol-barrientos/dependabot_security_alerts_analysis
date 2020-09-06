@@ -1,7 +1,9 @@
 import semver
-import dependency
+
 import sys
 import pandas as pd
+
+from src import dependency
 
 new_vulnerabilities = []
 last_commit_vulnerabilities = []
@@ -14,8 +16,16 @@ severity_records = []
 vulnerable_versions_csv = pd.read_csv("../input/vulnerable_versions.csv", sep=';', dtype={"id": int})
 
 
-
 def cleaner(version_to_clean):
+    """It cleans a dependency version, removing spaces, '^' and '~'.
+    Semver does not read version strings that contain those unwanted characters.
+
+    :param version_to_clean: Dependency version to clean.
+    :type version_to_clean: str
+
+    :return: Dependency version cleaned.
+    :rtype: str
+    """
     dependency_version_cleaned = version_to_clean.replace(" ", "")
     dependency_version_cleaned = dependency_version_cleaned.replace("^", "")
     dependency_version_cleaned = dependency_version_cleaned.replace("~", "")
@@ -23,29 +33,40 @@ def cleaner(version_to_clean):
 
 
 def version_in_range(vulnerable_range, version):
+    """It calculates if a version is within range.
+
+    :param vulnerable_range: It represents the range.
+    :type vulnerable_range: str
+
+    :param version: It represents the dependency version.
+    :type version: str
+
+    :return: It return 'True' if version is within range, if not it returns 'False'.
+    :rtype: bool
+    """
     range_cleaned = cleaner(vulnerable_range)
 
-    if ">=" in vulnerable_range:  # true if result -1 or 0
+    if ">=" in vulnerable_range:
         range_cleaned = range_cleaned.replace(">=", "")
         result = semver.compare(range_cleaned, version)
         if result is -1 or 0:
             return True
-    elif "<=" in vulnerable_range:  # true if result 1 or 0
+    elif "<=" in vulnerable_range:
         range_cleaned = range_cleaned.replace("<=", "")
         result = semver.compare(range_cleaned, version)
         if result is 1 or 0:
             return True
-    elif ">" in vulnerable_range:  # true if result -1
+    elif ">" in vulnerable_range:
         range_cleaned = range_cleaned.replace(">", "")
         result = semver.compare(range_cleaned, version)
         if result is -1:
             return True
-    elif "<" in vulnerable_range:  # true if result 1
+    elif "<" in vulnerable_range:
         range_cleaned = range_cleaned.replace("<", "")
         result = semver.compare(range_cleaned, version)
         if result is 1:
             return True
-    elif "=" in vulnerable_range:  # true if result 0
+    elif "=" in vulnerable_range:
         range_cleaned = range_cleaned.replace("=", "")
 
     result = semver.compare(range_cleaned, version)
@@ -55,6 +76,17 @@ def version_in_range(vulnerable_range, version):
 
 
 def is_vulnerable(dependency_version, vulnerable_range):
+    """It analyzes if a dependency version is vulnerable.
+
+    :param dependency_version: It represents the dependency version.
+    :type dependency_version: str
+
+    :param vulnerable_range: It represents the vulnerable range.
+    :type vulnerable_range: str
+
+    :return: It returns 'True' if version is within range, if not it returns 'False'.
+    :rtype: bool
+    """
     if "," in vulnerable_range:
         return version_in_range(vulnerable_range.split(',')[0], dependency_version) and version_in_range(
             vulnerable_range.split(',')[1], dependency_version)
@@ -62,17 +94,52 @@ def is_vulnerable(dependency_version, vulnerable_range):
         return version_in_range(vulnerable_range, dependency_version)
 
 
-
 def get_dependency(line):
+    """It returns the dependency present in a line.
+
+    :param line: Line where the dependency is searched.
+    :type line: str
+
+    :return: It returns the dependency present in a line.
+    :rtype: Dependency
+    """
     # in case that the dependency name starts with @, we should remove '@' and add it after spliting.
     if line.startswith("@"):
         line = line[1:]
-        return dependency.Dependency("@" + line.split("@")[0], line.split("@")[1].replace("extraneous", ""), "?")
+        return dependency.Dependency("@" + line.split("@")[0], line.split("@")[1].replace("extraneous", ""))
     else:
-        return dependency.Dependency(line.split("@")[0], line.split("@")[1].replace("extraneous", ""), "?")
+        return dependency.Dependency(line.split("@")[0], line.split("@")[1].replace("extraneous", ""))
 
 
 def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, pattern_3, pattern_4, pattern_5, pattern_6):
+    """It returns the total number of dependencies presented in a commit. If one of those dependencies
+    contains a vulnerability it will be set into vulnerable dependencies list.
+
+    :param file_path: Path of npm vulnerable library versions file.
+    :type file_path: str
+
+    :param pattern_1: Possible pattern of first level dependency.
+    :type pattern_1: str
+
+    :param pattern_2: Possible pattern of first level dependency.
+    :type pattern_2: str
+
+    :param pattern_3: Possible pattern of first level dependency.
+    :type pattern_3: str
+
+    :param pattern_4: Possible pattern of first level dependency.
+    :type pattern_4: str
+
+    :param pattern_5: Possible pattern of first level dependency.
+    :type pattern_5: str
+
+    :param pattern_6: Possible pattern of first level dependency.
+    :type pattern_6: str
+
+
+    :return: It returns the total number of dependencies presented in a commit.
+    :rtype: int
+    """
     dependencies_set = []
     dependencies_set.clear()
     try:
@@ -106,6 +173,11 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
 
 
 def set_npm_and_yarn_dependencies():
+    """It safe last commit vulnerabilities and record the new dependencies and vulnerabilities.
+
+    :return: It returns the total number of npm and yarn dependencies.
+    :rtype: int
+    """
     last_commit_vulnerabilities.clear()
     for vul in total_commit_vulnerabilities:
         last_commit_vulnerabilities.append(vul)
@@ -125,6 +197,13 @@ def set_npm_and_yarn_dependencies():
 
 
 def set_new_vulnerability(current_dependency):
+    """If the current dependency is vulnerable, it will be classified as new, revoked or kept.
+    At the end the dependencies log is updated adding the current dependency.
+
+     :param current_dependency: Dependency to classify.
+     :type current_dependency: Dependency
+
+     """
     try:
         vulnerability_position = 0
         dependency_version = current_dependency.version

@@ -32,10 +32,12 @@ class Point:
         :param fixed_vulnerabilities: It contains the total number fix vulnerabilities that has been removed in a commit.
         :type fixed_vulnerabilities: int
 
-        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in a commit. They were not in the previous commit but in other.
+        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in
+        a commit. They were not in the previous commit but in other.
         :type revoked_vulnerabilities: int
 
-        :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit. They were already presented in the previous commit.
+        :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit.
+        They were already presented in the previous commit.
         :type kept_vulnerabilities: int
 
         :param total_vulnerabilities: It contains the total number of vulnerabilities present in a commit.
