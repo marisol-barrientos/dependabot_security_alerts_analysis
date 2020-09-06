@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime
 import time
 
-from src import db_manager, git_manager, helpers, dependencies_manager, directories_manager, point
+from src import db_manager, git_manager, helpers, dependencies_manager, directories_manager, db_point
 
 with open('../config.yaml') as config_file:
     config = yaml.full_load(config_file)
@@ -58,7 +58,7 @@ def main():
                     if directories_manager.download_file(repo, commit.hexsha, ".github/dependabot.yml"):
                         has_config_file = "True"
 
-                    db_manager.record_point(point.Point(
+                    db_manager.record_point(db_point.Influx_Point(
                                               repos_csv['lib_id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha

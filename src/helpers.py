@@ -7,7 +7,7 @@ def prepare_repo_environment():
         """
     dependencies_manager.total_commit_vulnerabilities.clear()
     dependencies_manager.vulnerabilities_log.clear()
-    directories_manager.new_output_folder()
+    directories_manager.new_cloned_git_folder()
 
 def prepare_commit_environment(repo, commit):
     """ It clears 'severity records' and 'no duplicated vulnerabilities' lists.

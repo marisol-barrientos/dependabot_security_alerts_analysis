@@ -1,5 +1,6 @@
 from influxdb_client import InfluxDBClient, WritePrecision, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
+import src.db_point
 
 
 
@@ -23,7 +24,7 @@ def record_point(point, write_api, bucket, org):
     """It writes a point into a InfluxDB Bucket.
 
         :param point: It represent the Point that is wanted to be added into the bucket.
-        :type point: Point
+        :type point: Influx_Point
 
         :param write_api: It represent the API used to write the point on a bucket.
         :type write_api: WriteApi
@@ -35,9 +36,9 @@ def record_point(point, write_api, bucket, org):
         :type org: str
         """
     print(point)
-    print("         ~~ INFO:Writing point into '" + bucket + "' ...")
+    print("\n         ~~ INFO:Writing point into '" + bucket + "' ...")
 
-    p = Point("TEST_SUNDAY")\
+    p = Point("TEST_SUNDAY_2")\
         .time(point.commited_date, WritePrecision.S)\
         .tag("repo_id", point.repo_id)\
         .tag("commit_hexsha", point.commit_hexsha)\

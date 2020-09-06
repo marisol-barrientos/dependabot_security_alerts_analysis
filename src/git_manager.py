@@ -30,7 +30,7 @@ def diff_in_dependencies(current_commit, previous_commit):
 
 
 def clone_repo(name, owner, directory):
-    """ To clone repository into '/outputs'
+    """ To clone repository into '/cloned_git'
 
     :param name: Repository name.
     :type name: str
@@ -44,10 +44,10 @@ def clone_repo(name, owner, directory):
     :return: It returns an instance of the cloned repository.
     :rtype: Repo
     """
-    print("\n~~ INFO:Cloning '" + owner + "/" + name + ".git' into '" + directory[:-3] + "output'")
+    print("\n~~ INFO:Cloning '" + owner + "/" + name + ".git' into '" + directory[:-3] + "cloned_git'")
 
     return Repo.clone_from(
         url="https://github.com/" + owner + "/" + name,
-        to_path="../output",
+        to_path="../cloned_git",
         no_checkout=True
     )

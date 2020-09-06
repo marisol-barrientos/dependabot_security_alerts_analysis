@@ -142,7 +142,7 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
     dependencies_set = []
     dependencies_set.clear()
     try:
-        with open('../output/' + file_path) as file:
+        with open('../cloned_git/' + file_path) as file:
             if "npm" in file_path:
                 file_content = file.readlines()[1:]
             else:

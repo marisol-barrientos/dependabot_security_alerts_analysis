@@ -2,7 +2,7 @@
 import uuid
 
 
-class Point:
+class Influx_Point:
     """Conceptual class to represent each point present in the InfluxDB Bucket.
 
         :param repo_id: It represents the id of a repository.
