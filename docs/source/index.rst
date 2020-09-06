@@ -15,7 +15,6 @@ Guide
 
    license
    help
-   modules
 
 
 
