@@ -1,8 +1,5 @@
-#!/usr/bin/python
-import uuid
 
-
-class Influx_Point:
+class InfluxPoint:
     """Conceptual class to represent each point present in the InfluxDB Bucket.
 
         :param repo_id: It represents the id of a repository.
@@ -32,12 +29,10 @@ class Influx_Point:
         :param fixed_vulnerabilities: It contains the total number fix vulnerabilities that has been removed in a commit.
         :type fixed_vulnerabilities: int
 
-        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in
-        a commit. They were not in the previous commit but in other.
+        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in a commit. They were not in the previous commit but in other.
         :type revoked_vulnerabilities: int
 
-        :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit.
-        They were already presented in the previous commit.
+        :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit. They were already presented in the previous commit.
         :type kept_vulnerabilities: int
 
         :param total_vulnerabilities: It contains the total number of vulnerabilities present in a commit.
@@ -58,6 +53,7 @@ class Influx_Point:
         :param has_config_file: It indicates if in the commit it is present the Dependabot configuration file.
         :type has_config_file: bool
         """
+
     def __init__(self
                  , repo_id
                  , commited_date

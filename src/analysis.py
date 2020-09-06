@@ -58,7 +58,7 @@ def main():
                     if directories_manager.download_file(repo, commit.hexsha, ".github/dependabot.yml"):
                         has_config_file = "True"
 
-                    db_manager.record_point(db_point.Influx_Point(
+                    db_manager.record_point(db_point.InfluxPoint(
                                               repos_csv['lib_id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha

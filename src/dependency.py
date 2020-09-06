@@ -1,7 +1,3 @@
-#!/usr/bin/python
-import uuid
-
-
 class Dependency:
     """Conceptual class to represent each dependency.
 
@@ -16,4 +12,3 @@ class Dependency:
         """
         self.library_name = library_name
         self.version = version
-        self.id = uuid.uuid4()

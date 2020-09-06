@@ -12,6 +12,8 @@
 #
 import os
 import sys
+from unittest import mock
+
 sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
@@ -52,5 +54,9 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api']
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = mock.Mock()
 
 html_show_sourcelink = False
