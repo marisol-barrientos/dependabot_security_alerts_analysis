@@ -1,0 +1,6 @@
+vulnerable_versions_csv : '../input/vulnerable_versions.csv'
+repos_csv_to_read : '../input/repos.csv'
+token : 'SisUr38ou74bOFTLM9i-pq-zilr9BDTcSsE8j49gyHE2fR9LFu83uQyrjrBQ8OTS6kURCrmJkaaiG0UI7OOQuw=='
+org : 'meerschweinchenseminar@gmail.com'
+bucket : "meerschweinchenseminar's Bucket"
+client : 'https://eu-central-1-1.aws.cloud2.influxdata.com'
