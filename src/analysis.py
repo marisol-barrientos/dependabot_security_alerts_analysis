@@ -43,9 +43,8 @@ def main():
             repo = git_manager.clone_repo(repo_name, repo_owner, current_directory)
 
             # Iterate over each commit
-            for commit in list(repo.iter_commits()):  # if we want the 1000 first -> (repo.iter_commits('master', max_count=1000)
+            for commit in list(repo.iter_commits()):  # if we want the 1000 first commits -> (repo.iter_commits('master', max_count=1000)
 
-                has_config_file = "False"
                 print("\n       * Commit: '" + commit.hexsha + "'")
                 if previous_commit is 0 or git_manager.diff_in_dependencies(commit, previous_commit):
                     has_config_file = helpers.prepare_commit_environment(repo, commit)
@@ -59,7 +58,8 @@ def main():
                     if directories_manager.download_file(repo, commit.hexsha, ".github/dependabot.yml"):
                         has_config_file = "True"
 
-                    db_manager.record_point(point.Point(repos_csv['lib_id'][i]
+                    db_manager.record_point(point.Point(
+                                              repos_csv['lib_id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha
                                             , commit.author

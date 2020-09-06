@@ -1,5 +1,7 @@
-from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client import InfluxDBClient, WritePrecision, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
+
+
 
 def open_connection(client_url, token):
     """It creates and returns a 'Write API' instance, for an specific client and token.

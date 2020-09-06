@@ -3,7 +3,7 @@ import uuid
 
 
 class Point:
-    """This is a conceptual class to represent each point present in the InfluxDB Bucket.
+    """Conceptual class to represent each point present in the InfluxDB Bucket.
 
         :param repo_id: It represents the id of a repository.
         :type repo_id: int
@@ -58,9 +58,24 @@ class Point:
         :param has_config_file: It indicates if in the commit it is present the Dependabot configuration file.
         :type has_config_file: bool
         """
-    def __init__(self, repo_id, commited_date, commit_hexsha, commit_author, repo_name, repo_owner,
-                 total_commit_dependencies, new_vulnerabilities, fixed_vulnerabilities, revoked_vulnerabilities, kept_vulnerabilities,
-                 total_vulnerabilities, critical_severity, high_severity, moderate_severity, low_severity, has_config_file):
+    def __init__(self
+                 , repo_id
+                 , commited_date
+                 , commit_hexsha
+                 , commit_author
+                 , repo_name
+                 , repo_owner
+                 , total_commit_dependencies
+                 , new_vulnerabilities
+                 , fixed_vulnerabilities
+                 , revoked_vulnerabilities
+                 , kept_vulnerabilities
+                 , total_vulnerabilities
+                 , critical_severity
+                 , high_severity
+                 , moderate_severity
+                 , low_severity
+                 , has_config_file):
         """Constructor method
         """
         self.repo_id = repo_id

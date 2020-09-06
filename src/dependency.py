@@ -3,7 +3,7 @@ import uuid
 
 
 class Dependency:
-    """This is a conceptual class to represent each dependency.
+    """Conceptual class to represent each dependency.
 
         :param library_name: Name of a library.
         :type library_name: str

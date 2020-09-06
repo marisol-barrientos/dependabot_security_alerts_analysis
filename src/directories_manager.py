@@ -2,7 +2,7 @@ import shutil
 from os import path
 import os
 
-import scripts_manager
+from src import scripts_manager
 
 
 def download_file(repo, commit_hexsha, file_name):

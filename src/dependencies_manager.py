@@ -103,7 +103,6 @@ def get_dependency(line):
     :return: It returns the dependency present in a line.
     :rtype: Dependency
     """
-    # in case that the dependency name starts with @, we should remove '@' and add it after spliting.
     if line.startswith("@"):
         line = line[1:]
         return dependency.Dependency("@" + line.split("@")[0], line.split("@")[1].replace("extraneous", ""))
@@ -173,7 +172,7 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
 
 
 def set_npm_and_yarn_dependencies():
-    """It safe last commit vulnerabilities and record the new dependencies and vulnerabilities.
+    """It saves last commit vulnerabilities and record the new dependencies and vulnerabilities.
 
     :return: It returns the total number of npm and yarn dependencies.
     :rtype: int
@@ -198,7 +197,7 @@ def set_npm_and_yarn_dependencies():
 
 def set_new_vulnerability(current_dependency):
     """If the current dependency is vulnerable, it will be classified as new, revoked or kept.
-    At the end the dependencies log is updated adding the current dependency.
+    At the end, the dependencies log is updated. It is added the current dependency.
 
      :param current_dependency: Dependency to classify.
      :type current_dependency: Dependency
