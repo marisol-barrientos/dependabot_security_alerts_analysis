@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'analysis_dependabot'
-copyright = '2020, Maria del Sol Barrientos Moreno'
-author = 'Maria del Sol Barrientos Moreno'
+copyright = '2020, Marisol Barrientos Moreno'
+author = 'Marisol Barrientos Moreno'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
