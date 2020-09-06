@@ -20,6 +20,7 @@
 project = 'analysis_dependabot'
 copyright = '2020, Marisol Barrientos Moreno'
 author = 'Marisol Barrientos Moreno'
+master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -54,4 +55,4 @@ html_theme = 'alabaster'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-master_doc = 'index'
+
