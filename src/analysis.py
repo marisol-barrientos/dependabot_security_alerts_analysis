@@ -1,8 +1,6 @@
 import os
 import sys
 
-import dependencies_manager
-import helpers
 import yaml
 import pandas as pd
 
@@ -10,12 +8,7 @@ import pandas as pd
 from datetime import datetime
 import time
 
-
-import point
-import db_manager
-import directories_manager
-import scripts_manager
-import git_manager
+from src import db_manager, git_manager, helpers, dependencies_manager, directories_manager, point
 
 with open('../config.yaml') as config_file:
     config = yaml.full_load(config_file)
@@ -66,7 +59,7 @@ def main():
                     if directories_manager.download_file(repo, commit.hexsha, ".github/dependabot.yml"):
                         has_config_file = "True"
 
-                    db_manager.record_point(repos_csv['lib_id'][i]
+                    db_manager.record_point(point.Point(repos_csv['lib_id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha
                                             , commit.author
@@ -82,7 +75,7 @@ def main():
                                             , dependencies_manager.severity_records.count("3")
                                             , dependencies_manager.severity_records.count("2")
                                             , dependencies_manager.severity_records.count("1")
-                                            , has_config_file
+                                            , has_config_file)
                                             , write_api
                                             , bucket
                                             , org)

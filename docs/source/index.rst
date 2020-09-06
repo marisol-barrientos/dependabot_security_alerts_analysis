@@ -9,18 +9,22 @@ Introduction
 Guide
 ^^^^^
 
-.. toctree::
-   :maxdepth: 2
+TeacherAPI controller
+=====================
+.. automodule:: src.analysis
+   :members:
 
-   license
-   help
+TeacherAPI models
+=================
+.. automodule:: teacherAPI.models
+   :members:
 
+TeacherAPI database
+===================
+.. automodule:: teacherAPI.database
+   :members:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+TeacherAPI populate
+===================
+.. automodule:: teacherAPI.populate
+   :members:
