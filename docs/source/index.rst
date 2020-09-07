@@ -14,7 +14,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    modules
 
