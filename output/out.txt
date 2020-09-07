@@ -119,24 +119,6 @@
          ~~ INFO:Dependencies have not changed. 
 
        * Commit: '777b2d735ec08ab96a57943aa28f229332552146'
-         - Commited date:'1579594380'
-         - Repository id: '235354561'
-         - Commit author: 'arnaudjnn'
-         - Repo name: 'website-backend'
-         - Repo owner: 'grimpio'
-         - Total number of dependencies: 1228
-         - New vulnerabilities: 0
-         - Fixed vulnerabilities: 0
-         - Revoked vulnerabilities: 0
-         - Kept vulnerabilities: 21
-         - Total number of vulnerabilities: 21
-         - Critical severity: 0
-         - High severity: 11
-         - Moderate severity: 8
-         - Low severity: 2
-         - Dependabot configuration file: 'False'
-
-         ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
 Error: 
 <class 'KeyboardInterrupt'>
 Error: 

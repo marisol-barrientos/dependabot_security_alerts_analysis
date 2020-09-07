@@ -23,10 +23,9 @@ project = 'analysis_dependabot'
 copyright = '2020, Marisol Barrientos Moreno'
 author = 'Marisol Barrientos Moreno'
 master_doc = 'index'
-source_suffix = '.rst'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------
