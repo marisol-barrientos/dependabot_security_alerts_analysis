@@ -59,7 +59,7 @@ def new_cloned_git_folder():
 
 def first_level_dependencies_tree(repo, commit):
     """ It downloads 'package.json', 'package-lock.json' and 'npm-shrinkwrap.json',
-    'yarn.lock' is possible. If'package.json' was downloaded, it will generate the
+    'yarn.lock' if it is possible. If'package.json' was downloaded, it will generate the
     first level npm dependencies tree. If 'yarn.lock' was downloaded, it will create
     the first level yarn dependencies tree.
 

@@ -1,11 +1,11 @@
 
 class InfluxPoint:
-    """Conceptual class to represent each point present in the InfluxDB Bucket.
+    """Conceptual class to represent each point present in a InfluxDB bucket.
 
-        :param repo_id: It represents the id of a repository.
+        :param repo_id: Id of a repository.
         :type repo_id: int
 
-        :param commited_date: It is the date when the commit was committed.
+        :param commited_date: Date when the commit was committed.
         :type commited_date: int
 
         :param commit_hexsha: It is the hexsha of a commit.
@@ -26,10 +26,10 @@ class InfluxPoint:
         :param new_vulnerabilities: It contains the total number new vulnerabilities that has been introduced in a commit.
         :type new_vulnerabilities: int
 
-        :param fixed_vulnerabilities: It contains the total number fix vulnerabilities that has been removed in a commit.
+        :param fixed_vulnerabilities: It contains the total number of vulnerabilities that have been fixed in the current commit.
         :type fixed_vulnerabilities: int
 
-        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in a commit. They were not in the previous commit but in other.
+        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in a commit. They were not in the previous commit but in other older.
         :type revoked_vulnerabilities: int
 
         :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit. They were already presented in the previous commit.

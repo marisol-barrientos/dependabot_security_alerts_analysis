@@ -3,7 +3,7 @@ from git import Repo
 
 def diff_in_dependencies(current_commit, previous_commit):
     """ It compares the current commit with the previous. To check if'package.json',
-    'package-lock.json', 'npm-shrinkwrap.json' or 'yarn.lock' was changed.
+    'package-lock.json', 'npm-shrinkwrap.json' or 'yarn.lock' were changed.
 
     :param current_commit: Current commit.
     :type current_commit: Commit

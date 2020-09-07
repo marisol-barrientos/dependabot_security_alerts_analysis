@@ -1,5 +1,5 @@
-Git Manager:
-============
+Git Manager
+===========
 
 .. automodule:: git_manager
    :members:

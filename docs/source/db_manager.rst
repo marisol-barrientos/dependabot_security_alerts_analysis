@@ -1,5 +1,5 @@
-DB Manager:
-===========
+DB Manager
+==========
 
 .. automodule:: db_manager
    :members:

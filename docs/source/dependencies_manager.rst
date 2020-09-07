@@ -1,5 +1,5 @@
-Dependencies Manager:
-=====================
+Dependencies Manager
+====================
 
 .. automodule:: dependencies_manager
    :members:

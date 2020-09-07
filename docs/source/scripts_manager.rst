@@ -1,5 +1,5 @@
-Scripts Manager:
-================
+Scripts Manager
+===============
 
 .. automodule:: scripts_manager
    :members:

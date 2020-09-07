@@ -1,5 +1,5 @@
-Directories Manager:
-====================
+Directories Manager
+===================
 
 .. automodule:: directories_manager
    :members:

@@ -55,7 +55,7 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api','src']
+MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api','src',]
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
 

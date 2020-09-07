@@ -3,15 +3,15 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 
 def open_connection(client_url, token):
-    """It creates and returns a 'Write API' instance, for an specific client and token.
+    """It creates and returns a new 'WriteApi' instance for an specific client and token.
 
-    :param client_url: It contains InfluxDB server client.
+    :param client_url: It contains a InfluxDB server client.
     :type client_url: str
 
-    :param token: It contains your authentication token.
+    :param token: It contains the authentication token.
     :type token: str
 
-    :return: Write API instance.
+    :return: It returns a new WriteApi instance.
     :rtype: WriteApi
     """
     client = InfluxDBClient(url=client_url, token=token)
@@ -21,16 +21,16 @@ def open_connection(client_url, token):
 def record_point(point, write_api, bucket, org):
     """It writes a point into a InfluxDB Bucket.
 
-        :param point: It represent the Point that is wanted to be added into the bucket.
+        :param point: It represents the Point that will be added inside the bucket.
         :type point: InfluxPoint
 
-        :param write_api: It represent the API used to write the point on a bucket.
+        :param write_api: It represents the API used to write the point on a bucket.
         :type write_api: WriteApi
 
         :param bucket: It contains the name of the bucket were the point will be written.
         :type bucket: str
 
-        :param org: It contains your organization ID.
+        :param org: It contains the organization ID.
         :type org: str
         """
     print(point)
