@@ -1,0 +1,23 @@
+{
+  securityAdvisories(orderBy: {field: PUBLISHED_AT, direction: DESC}, first: 100) {
+    pageInfo {
+      endCursor
+    }
+    nodes {
+      ghsaId
+      publishedAt
+      vulnerabilities(ecosystem: NPM, first: 1) {
+        nodes {
+          package {
+            name
+          }
+          severity
+          firstPatchedVersion {
+            identifier
+          }
+          vulnerableVersionRange
+        }
+      }
+    }
+  }
+}

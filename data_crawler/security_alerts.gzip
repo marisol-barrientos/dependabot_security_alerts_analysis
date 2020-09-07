@@ -1,0 +1,34 @@
+{
+  repository(name: "repo_to_test_name", owner: "owner_to_test_name") {
+    isArchived
+    vulnerabilityAlerts(first: 20) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      nodes {
+        vulnerableRequirements
+        dismissedAt
+        dismissReason
+        securityVulnerability {
+          advisory {
+            description
+            identifiers {
+              value
+            }
+          }
+          severity
+          package {
+            ecosystem
+            name
+          }
+          updatedAt
+          vulnerableVersionRange
+        }
+      }
+    }
+  }
+}
