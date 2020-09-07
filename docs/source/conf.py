@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../../src/'))
 project = 'analysis_dependabot'
 copyright = '2020, Marisol Barrientos Moreno'
 author = 'Marisol Barrientos Moreno'
-#master_doc = 'index'
+master_doc = 'index'
 source_suffix = '.rst'
 
 # The full version, including alpha/beta/rc tags
@@ -57,7 +57,7 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api','src',]
+MOCK_MODULES = ['pandas', 'influxdb_client', 'influxdb_client.client', 'influxdb_client.client.write_api','src','semver','git']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
 
