@@ -15,7 +15,16 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 .. _here: https://github.com/mss28/dependabot_security_alerts_analysis
 
+Contents:
+
 .. toctree::
    :maxdepth: 2
 
    modules
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
