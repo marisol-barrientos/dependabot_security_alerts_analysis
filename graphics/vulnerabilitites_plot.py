@@ -1,10 +1,14 @@
 import matplotlib.pyplot as plt
 
+cur_ax = plt.gca()
+
 x = ['2017', '2018',  '2019', '2020']
 y = [57,325,302,343]
 plt.bar(x,y,align="center")
-plt.title("New npm and yarn vulnerabilities records - GitHub Advisory")
-plt.show()
+plt.title("New npm and yarn vulnerabilities records.")
+cur_ax.set_ylabel('No. of new records')
+cur_ax.set_xlabel('Year when it was recorded into GitHub Advisory.')
+
 plt.savefig('npm_yarn_advisory.png')
 
 growth_rate_1 = round(100 * (325 - 57) / 57)
@@ -17,7 +21,7 @@ growth_rate_3 = round(100 * (343 - 302) / 302)
 print(str(growth_rate_3) + " %")
 """
 
-2020-09-01T21:26:50Z -> Cuando yo lo medí tenía 1028
+2020-09-01T21:26:50Z -> Cuando yo lo medí tenía 1027
 
 2020-09-08T21:26:50Z -> Una semana después tiene 
 
