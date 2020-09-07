@@ -1,0 +1,14 @@
+{
+  securityVulnerabilities(orderBy: {field: UPDATED_AT, direction: DESC}, ecosystem: NPM, first: 100) {
+    nodes {
+      advisory {
+        publishedAt
+      }
+      package {
+        name
+      }
+      severity
+      vulnerableVersionRange
+    }
+  }
+}

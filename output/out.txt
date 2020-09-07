@@ -127,3 +127,5 @@ Error:
 ~~ INFO:Analyzing evolution of vulnerable dependencies from 'evanxu/huoyanyanyi'
 
 ~~ INFO:Cloning 'evanxu/huoyanyanyi.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
+
+       * Commit: 'e3a13bb85013bc6acec33820c75e4093f66567a1'

@@ -2,7 +2,7 @@ Dependabot Security Alerts Analyzer
 ===================================
 
 
-Welcome to the documentation of Dependabot Security Alerts Analyzer. Come `here`_ to visit the project.
+Welcome to the documentation of Dependabot Security Alerts Analyzer!. Come `here`_ to visit the project.
 
 Overview
 --------
@@ -15,7 +15,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 .. _here: https://github.com/mss28/dependabot_security_alerts_analysis
 
-Contents:
 
 .. toctree::
    :maxdepth: 2
