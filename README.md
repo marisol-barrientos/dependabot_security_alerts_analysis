@@ -1,1 +1,1 @@
-# Dependabot Security Alerts Analysis
+# Dependabot Security Alerts Analyzer
