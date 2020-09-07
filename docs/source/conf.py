@@ -66,3 +66,5 @@ def setup(app):
 
 
 html_css_files = ['my_style.css']
+
+html_show_sourcelink = False
