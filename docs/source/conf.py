@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 project = 'analysis_dependabot'
 copyright = '2020, Marisol Barrientos Moreno'
 author = 'Marisol Barrientos Moreno'
-master_doc = 'index'
+#master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
