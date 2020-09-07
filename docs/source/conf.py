@@ -25,7 +25,7 @@ author = 'Marisol Barrientos Moreno'
 master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.2'
+release = '0.0.1'
 
 
 # -- General configuration ---------------------------------------------------
