@@ -13,9 +13,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
+.. _here: https://github.com/mss28/dependabot_security_alerts_analysis
+
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    modules
-
-.. _here: https://github.com/mss28/dependabot_security_alerts_analysis
