@@ -197,7 +197,7 @@ def set_npm_and_yarn_dependencies():
 
 def set_new_vulnerability(current_dependency):
     """If the current dependency is vulnerable, it will be classified as new, revoked or kept.
-    At the end, the dependencies log is updated. It is added the current dependency.
+    At the end, the vulnerabilities log is updated. It is added the current dependency.
 
      :param current_dependency: Dependency to classify.
      :type current_dependency: Dependency
