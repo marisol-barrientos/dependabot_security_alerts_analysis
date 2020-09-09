@@ -33,9 +33,9 @@ print("Low severity: ", low)
 
 cur_ax = plt.gca()
 
-x = ['Low', 'Moderate',  'High', 'Critical']
-y = [low, moderate, high, critical]
-plt.bar(x,y,align="center", color=['g', 'b', 'r', 'k'])
+bx = ['Low', 'Moderate',  'High', 'Critical']
+by = [low, moderate, high, critical]
+plt.bar(bx,by,align="center", color=['g', 'b', 'r', 'k'])
 cur_ax.set_xlabel('Severity level.')
 cur_ax.set_ylabel('Frequency.')
 

@@ -9,11 +9,137 @@ new_vulnerabilities = []
 last_commit_vulnerabilities = []
 vulnerabilities_log = []
 kept_vulnerabilities = []
-revoked_vulnerabilities = []
 total_commit_vulnerabilities = []
 no_duplicated_vulnerabilities = []
 severity_records = []
+removed_vulnerabilities = []
+fixed_vulnerabilities = []
+revoked_fixed_vulnerabilities = []
+revoked_removed_vulnerabilities = []
+historial_fixes = []
+
+critical_vulnerabilities =	{
+  "new_vulnerabilities": [],
+  "fixed_vulnerabilities": [],
+  "removed_vulnerabilities": [],
+  "revoked_fixed_vulnerabilities": [],
+  "revoked_removed_vulnerabilities": [],
+  "kept_vulnerabilities": []
+}
+
+high_vulnerabilities =	{
+  "new_vulnerabilities": [],
+  "fixed_vulnerabilities": [],
+  "removed_vulnerabilities": [],
+  "revoked_fixed_vulnerabilities": [],
+  "revoked_removed_vulnerabilities": [],
+  "kept_vulnerabilities": []
+}
+
+moderate_vulnerabilities =	{
+  "new_vulnerabilities": [],
+  "fixed_vulnerabilities": [],
+  "removed_vulnerabilities": [],
+  "revoked_fixed_vulnerabilities": [],
+  "revoked_removed_vulnerabilities": [],
+  "kept_vulnerabilities": []
+}
+
+low_vulnerabilities =	{
+  "new_vulnerabilities": [],
+  "fixed_vulnerabilities": [],
+  "removed_vulnerabilities": [],
+  "revoked_fixed_vulnerabilities": [],
+  "revoked_removed_vulnerabilities": [],
+  "kept_vulnerabilities": []
+}
+
+
+summary = {
+  "new_vulnerabilities": [],
+  "fixed_vulnerabilities": [],
+  "removed_vulnerabilities": [],
+  "revoked_fixed_vulnerabilities": [],
+  "revoked_removed_vulnerabilities": [],
+  "kept_vulnerabilities": [],
+  "total": []
+}
+
 vulnerable_versions_csv = pd.read_csv("../input/vulnerable_versions.csv", sep=';', dtype={"id": int})
+
+
+def calculate_summary():
+    """It saves total number of different vulnerability 'status'.
+
+    :param vulnerability_id: Vulnerability ID.
+    :type vulnerability_id: int
+
+    """
+    summary["new_vulnerabilities"] = new_vulnerabilities
+    summary["fixed_vulnerabilities"] = fixed_vulnerabilities
+    summary["removed_vulnerabilities"] = removed_vulnerabilities
+    summary["revoked_fixed_vulnerabilities"] = revoked_fixed_vulnerabilities
+    summary["revoked_removed_vulnerabilities"] = revoked_removed_vulnerabilities
+    summary["kept_vulnerabilities"] = kept_vulnerabilities
+    summary["total"] = total_commit_vulnerabilities
+
+
+def get_severity_level(vulnerability_id):
+    """It return severity level of a vulnerability.
+
+    :param vulnerability_id: Vulnerability ID.
+    :type vulnerability_id: int
+
+    :return: Vulnerability severity level.
+    :rtype: str
+    """
+    return vulnerable_versions_csv.loc[vulnerable_versions_csv['id'] == vulnerability_id, "severity"].to_numpy()
+
+
+def classify_vulnerabilities(vulnerabilities_list, vulnerability_type):
+    """It appends each vulnerability to corresponding dictionary depending on severity level.
+
+    :param vulnerabilities_list: List of vulnerabilities to classify.
+    :type vulnerabilities_list: []
+
+    :param vulnerability_type: Vulnerability type.
+    :type vulnerability_type: str
+    """
+    for vul in vulnerabilities_list:
+        if get_severity_level(vul) == 1:
+            low_vulnerabilities[vulnerability_type].append(vul)
+        if get_severity_level(vul) == 2:
+            moderate_vulnerabilities[vulnerability_type].append(vul)
+        if get_severity_level(vul) == 3:
+            high_vulnerabilities[vulnerability_type].append(vul)
+        if get_severity_level(vul) == 4:
+            critical_vulnerabilities[vulnerability_type].append(vul)
+
+
+def vulnerabilities_per_severity_level():
+    """It classifies each vulnerability depending on severity level.
+    """
+    classify_vulnerabilities(new_vulnerabilities, "new_vulnerabilities")
+    classify_vulnerabilities(fixed_vulnerabilities, "fixed_vulnerabilities")
+    classify_vulnerabilities(removed_vulnerabilities, "removed_vulnerabilities")
+    classify_vulnerabilities(revoked_fixed_vulnerabilities, "revoked_fixed_vulnerabilities")
+    classify_vulnerabilities(revoked_removed_vulnerabilities, "revoked_removed_vulnerabilities")
+    classify_vulnerabilities(kept_vulnerabilities, "kept_vulnerabilities")
+
+
+def clear_dictionaries():
+    """It clears 'summary', 'critical_vulnerabilities', 'high_vulnerabilities', 'moderate_vulnerabilities' and 'low_vulnerabilities'. To be ready to proccess next repository.
+    """
+    for amount in summary:
+        summary[amount].clear()
+    for amount in critical_vulnerabilities:
+        critical_vulnerabilities[amount].clear()
+    for amount in high_vulnerabilities:
+        high_vulnerabilities[amount].clear()
+    for amount in moderate_vulnerabilities:
+        moderate_vulnerabilities[amount].clear()
+    for amount in low_vulnerabilities:
+        low_vulnerabilities[amount].clear()
 
 
 def cleaner(version_to_clean):
@@ -168,6 +294,7 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
         file.close()
     except:
         pass
+
     return len(dependencies_set)
 
 
@@ -177,14 +304,18 @@ def set_npm_and_yarn_dependencies():
     :return: It returns the total number of npm and yarn dependencies.
     :rtype: int
     """
+
+    previous_commmit_vulnerabilities = last_commit_vulnerabilities
     last_commit_vulnerabilities.clear()
     for vul in total_commit_vulnerabilities:
         last_commit_vulnerabilities.append(vul)
 
+    clear_dictionaries()
     total_commit_vulnerabilities.clear()
     kept_vulnerabilities.clear()
     new_vulnerabilities.clear()
-    revoked_vulnerabilities.clear()
+    revoked_fixed_vulnerabilities.clear()
+    revoked_removed_vulnerabilities.clear()
 
     npm = set_dependencies_and_vulnerabilities('npm_dependencies.txt', "└── UNMET DEPENDENCY ", "├── UNMET DEPENDENCY "
                                                , "├── ", "└── ", "└── UNMET DEPENDENCY ", "├─┬ UNMET DEPENDENCY ")
@@ -192,12 +323,22 @@ def set_npm_and_yarn_dependencies():
     yarn = set_dependencies_and_vulnerabilities('yarn_dependencies.txt', "└─  UNMET DEPENDENCY ", "├─ UNMET DEPENDENCY "
                                                 , "├─ ", "└─  ", "└─  UNMET DEPENDENCY ", "├─┬ UNMET DEPENDENCY ")
 
+    for vulnerability in previous_commmit_vulnerabilities:
+        if vulnerability not in total_commit_vulnerabilities:
+            removed_vulnerabilities.append(vulnerability)
+        elif vulnerability not in kept_vulnerabilities:
+            fixed_vulnerabilities.append(vulnerability)
+            historial_fixes.append(vulnerability)
+
+    calculate_summary()
+    vulnerabilities_per_severity_level()
+
     return npm + yarn
 
 
 def set_new_vulnerability(current_dependency):
     """If the current dependency is vulnerable, it will be classified as new, revoked or kept.
-    At the end, the vulnerabilities log is updated. It is added the current dependency.
+    At the end, the dependencies log is updated. It is added the current dependency.
 
      :param current_dependency: Dependency to classify.
      :type current_dependency: Dependency
@@ -228,7 +369,10 @@ def set_new_vulnerability(current_dependency):
                     elif vulnerability_id in last_commit_vulnerabilities:
                         kept_vulnerabilities.append(vulnerability_id)
                     if vulnerability_id in vulnerabilities_log and vulnerability_id not in last_commit_vulnerabilities:
-                        revoked_vulnerabilities.append(vulnerability_id)
+                        if vulnerability_id not in historial_fixes:
+                            revoked_removed_vulnerabilities.append(vulnerability_id)
+                        else:
+                            revoked_fixed_vulnerabilities.append(vulnerability_id)
                     if vulnerability_id not in vulnerabilities_log:
                         vulnerabilities_log.append(vulnerability_id)
                     no_duplicated_vulnerabilities.append(vulnerability_id)
@@ -242,7 +386,11 @@ def set_new_vulnerability(current_dependency):
                 if vul_id not in total_commit_vulnerabilities:
                     total_commit_vulnerabilities.append(vul_id)
 
-            for vul_id in revoked_vulnerabilities:
+            for vul_id in revoked_fixed_vulnerabilities:
+                if vul_id not in total_commit_vulnerabilities:
+                    total_commit_vulnerabilities.append(vul_id)
+
+            for vul_id in revoked_removed_vulnerabilities:
                 if vul_id not in total_commit_vulnerabilities:
                     total_commit_vulnerabilities.append(vul_id)
 

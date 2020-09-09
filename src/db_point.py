@@ -1,3 +1,5 @@
+from datetime import datetime
+
 
 class InfluxPoint:
     """Conceptual class to represent each point present in a InfluxDB bucket.
@@ -23,55 +25,48 @@ class InfluxPoint:
         :param total_commit_dependencies: It contains the total number of dependencies present in a commit.
         :type total_commit_dependencies: int
 
-        :param new_vulnerabilities: It contains the total number new vulnerabilities that has been introduced in a commit.
-        :type new_vulnerabilities: int
+        :param summary: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are the total number of vulnerabilities that correspond to those types.
+        :type summary: {[]}
 
-        :param fixed_vulnerabilities: It contains the total number of vulnerabilities that have been fixed in the current commit.
-        :type fixed_vulnerabilities: int
+        :param critical_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are critical severity vulnerabilities corresponding to those types.
 
-        :param revoked_vulnerabilities: It contains the total number revoked vulnerabilities that has been introduced in a commit. They were not in the previous commit but in other older.
-        :type revoked_vulnerabilities: int
+        :type critical_severity: {[]}
 
-        :param kept_vulnerabilities: It contains the total number of vulnerabilities that are kept in a commit. They were already presented in the previous commit.
-        :type kept_vulnerabilities: int
+        :param critical_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are high severity vulnerabilities corresponding to those types.
+        :type high_severity: {[]}
 
-        :param total_vulnerabilities: It contains the total number of vulnerabilities present in a commit.
-        :type total_vulnerabilities: int
+        :param moderate_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are moderate severity vulnerabilities corresponding to those types.
+        :type moderate_severity: {[]}
 
-        :param critical_severity: It contains the total number of critical severity vulnerabilities present in a commit.
-        :type critical_severity: int
-
-        :param high_severity: It contains the total number of high severity vulnerabilities present in a commit.
-        :type high_severity: int
-
-        :param moderate_severity: It contains the total number of moderate severity vulnerabilities present in a commit.
-        :type moderate_severity: int
-
-        :param low_severity: It contains the total number of low severity vulnerabilities present in a commit.
+        :param moderate_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are low severity vulnerabilities corresponding to those types.
         :type low_severity: int
 
         :param has_config_file: It indicates if in the commit it is present the Dependabot configuration file.
         :type has_config_file: bool
+
+        :param email: It contains the email of the commit author.
+        :type email: str
+
+        :param commit_message: It contains the commit message.
+        :type commit_message: str
         """
 
     def __init__(self
-                 , repo_id
-                 , commited_date
-                 , commit_hexsha
-                 , commit_author
-                 , repo_name
-                 , repo_owner
-                 , total_commit_dependencies
-                 , new_vulnerabilities
-                 , fixed_vulnerabilities
-                 , revoked_vulnerabilities
-                 , kept_vulnerabilities
-                 , total_vulnerabilities
-                 , critical_severity
-                 , high_severity
-                 , moderate_severity
-                 , low_severity
-                 , has_config_file):
+                     , repo_id
+                     , commited_date
+                     , commit_hexsha
+                     , commit_author
+                     , repo_name
+                     , repo_owner
+                     , total_commit_dependencies
+                     , summary
+                     , critical_severity
+                     , high_severity
+                     , moderate_severity
+                     , low_severity
+                     , has_config_file
+                     , email
+                     , commit_message):
         """Constructor method
         """
         self.repo_id = repo_id
@@ -81,34 +76,30 @@ class InfluxPoint:
         self.repo_name = repo_name
         self.repo_owner = repo_owner
         self.total_commit_dependencies = total_commit_dependencies
-        self.new_vulnerabilities = new_vulnerabilities
-        self.fixed_vulnerabilities = fixed_vulnerabilities
-        self.revoked_vulnerabilities = revoked_vulnerabilities
-        self.kept_vulnerabilities = kept_vulnerabilities
-        self.total_vulnerabilities = total_vulnerabilities
+        self.summary = summary
         self.critical_severity = critical_severity
         self.high_severity = high_severity
         self.moderate_severity = moderate_severity
         self.low_severity = low_severity
         self.has_config_file = has_config_file
+        self.email = email
+        self.commit_message = commit_message
 
 
     def __str__(self):
         """To String method
         """
-        return "         - Commited date:'" + str(self.commited_date) + "'" + \
+        return "         - Commited date:'" + datetime.utcfromtimestamp(self.commited_date).strftime('%Y-%m-%d %H:%M:%S') + "'" + \
                "\n         - Repository id: '" + str(self.repo_id) + "'" + \
                "\n         - Commit author: '" + str(self.commit_author) + "'" + \
                "\n         - Repo name: '" + self.repo_name + "'" + \
                "\n         - Repo owner: '" + self.repo_owner + "'" + \
                "\n         - Total number of dependencies: " + str(self.total_commit_dependencies) + \
-               "\n         - New vulnerabilities: " + str(self.new_vulnerabilities) + \
-               "\n         - Fixed vulnerabilities: " + str(self.fixed_vulnerabilities) + \
-               "\n         - Revoked vulnerabilities: " + str(self.revoked_vulnerabilities) + \
-               "\n         - Kept vulnerabilities: " + str(self.kept_vulnerabilities) + \
-               "\n         - Total number of vulnerabilities: " + str(self.total_vulnerabilities) + \
+               "\n         - Dependabot configuration file: '" + str(self.has_config_file) + "'" + \
+               "\n         - Email address: '" + str(self.email) + "'" + \
+               "\n         - Commit message: '" + self.commit_message.title() + \
+               "\n         - Total number of vulnerabilities: " + str(self.summary) + \
                "\n         - Critical severity: " + str(self.critical_severity) + \
                "\n         - High severity: " + str(self.high_severity) + \
                "\n         - Moderate severity: " + str(self.moderate_severity) + \
-               "\n         - Low severity: " + str(self.low_severity) + \
-               "\n         - Dependabot configuration file: '" + str(self.has_config_file) + "'"
+               "\n         - Low severity: " + str(self.low_severity)
