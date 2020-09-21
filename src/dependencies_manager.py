@@ -17,6 +17,12 @@ fixed_vulnerabilities = []
 revoked_fixed_vulnerabilities = []
 revoked_removed_vulnerabilities = []
 historial_fixes = []
+total_dependencies = []
+
+removed_vulnerabilities_historial = []
+
+dependencies_set = []
+previous_dependencies_affected = []
 
 critical_vulnerabilities =	{
   "new_vulnerabilities": [],
@@ -265,7 +271,7 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
     :return: It returns the total number of dependencies presented in a commit.
     :rtype: int
     """
-    dependencies_set = []
+
     dependencies_set.clear()
     try:
         with open('../cloned_git/' + file_path) as file:
@@ -294,7 +300,7 @@ def set_dependencies_and_vulnerabilities(file_path, pattern_1, pattern_2, patter
         file.close()
     except:
         pass
-
+    total_dependencies = dependencies_set
     return len(dependencies_set)
 
 
@@ -304,18 +310,23 @@ def set_npm_and_yarn_dependencies():
     :return: It returns the total number of npm and yarn dependencies.
     :rtype: int
     """
-
+    vulnerable_dependencies = previous_dependencies_affected
     previous_commmit_vulnerabilities = last_commit_vulnerabilities
     last_commit_vulnerabilities.clear()
+    previous_dependencies_affected.clear()
+
     for vul in total_commit_vulnerabilities:
         last_commit_vulnerabilities.append(vul)
 
     clear_dictionaries()
+
     total_commit_vulnerabilities.clear()
     kept_vulnerabilities.clear()
     new_vulnerabilities.clear()
     revoked_fixed_vulnerabilities.clear()
     revoked_removed_vulnerabilities.clear()
+    removed_vulnerabilities.clear()
+
 
     npm = set_dependencies_and_vulnerabilities('npm_dependencies.txt', "└── UNMET DEPENDENCY ", "├── UNMET DEPENDENCY "
                                                , "├── ", "└── ", "└── UNMET DEPENDENCY ", "├─┬ UNMET DEPENDENCY ")
@@ -323,10 +334,16 @@ def set_npm_and_yarn_dependencies():
     yarn = set_dependencies_and_vulnerabilities('yarn_dependencies.txt', "└─  UNMET DEPENDENCY ", "├─ UNMET DEPENDENCY "
                                                 , "├─ ", "└─  ", "└─  UNMET DEPENDENCY ", "├─┬ UNMET DEPENDENCY ")
 
+    deleted_vulnerabilities = []
+    for dependency in vulnerable_dependencies:
+        if dependency.library_name not in dependencies_set:
+            deleted_vulnerabilities.append(dependency.version)
+
     for vulnerability in previous_commmit_vulnerabilities:
-        if vulnerability not in total_commit_vulnerabilities:
+        if vulnerability in deleted_vulnerabilities and vulnerability not in total_commit_vulnerabilities and vulnerability not in removed_vulnerabilities_historial:
             removed_vulnerabilities.append(vulnerability)
-        elif vulnerability not in kept_vulnerabilities:
+            removed_vulnerabilities_historial.append(vulnerability)
+        elif vulnerability not in kept_vulnerabilities and vulnerability not in historial_fixes:
             fixed_vulnerabilities.append(vulnerability)
             historial_fixes.append(vulnerability)
 
@@ -363,16 +380,19 @@ def set_new_vulnerability(current_dependency):
                 vulnerability_id = matched_vulnerable_ids[vulnerability_position]
                 if is_vulnerable(dependency_version_clean,
                                  vulnerable_version_range) and vulnerability_id not in no_duplicated_vulnerabilities:
+                    previous_dependencies_affected.append(dependency.Dependency(current_dependency.library_name,vulnerability_id))
                     if vulnerability_id not in vulnerabilities_log:
                         if vulnerability_id not in last_commit_vulnerabilities:
                             new_vulnerabilities.append(vulnerability_id)
                     elif vulnerability_id in last_commit_vulnerabilities:
                         kept_vulnerabilities.append(vulnerability_id)
                     if vulnerability_id in vulnerabilities_log and vulnerability_id not in last_commit_vulnerabilities:
-                        if vulnerability_id not in historial_fixes:
+                        if vulnerability_id not in historial_fixes and vulnerability_id in removed_vulnerabilities_historial:
                             revoked_removed_vulnerabilities.append(vulnerability_id)
-                        else:
+                            removed_vulnerabilities_historial.remove(vulnerability_id)
+                        elif  vulnerability_id in historial_fixes and vulnerability_id not in removed_vulnerabilities_historial:
                             revoked_fixed_vulnerabilities.append(vulnerability_id)
+                            historial_fixes.remove(vulnerability_id)
                     if vulnerability_id not in vulnerabilities_log:
                         vulnerabilities_log.append(vulnerability_id)
                     no_duplicated_vulnerabilities.append(vulnerability_id)

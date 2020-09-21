@@ -12,4 +12,4 @@ Source code
 .. literalinclude:: ../../src/db_manager.py
    :language: python
    :linenos:
-   :lines: 5-58
+   :lines: 5-87

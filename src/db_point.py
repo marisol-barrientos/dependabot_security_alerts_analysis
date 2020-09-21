@@ -26,19 +26,18 @@ class InfluxPoint:
         :type total_commit_dependencies: int
 
         :param summary: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are the total number of vulnerabilities that correspond to those types.
-        :type summary: {[]}
+        :type summary: Dictionary of lists.
 
         :param critical_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are critical severity vulnerabilities corresponding to those types.
+        :type critical_severity: Dictionary of lists.
 
-        :type critical_severity: {[]}
-
-        :param critical_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are high severity vulnerabilities corresponding to those types.
-        :type high_severity: {[]}
+        :param high_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are high severity vulnerabilities corresponding to those types.
+        :type high_severity: Dictionary of lists.
 
         :param moderate_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are moderate severity vulnerabilities corresponding to those types.
-        :type moderate_severity: {[]}
+        :type moderate_severity: Dictionary of lists.
 
-        :param moderate_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are low severity vulnerabilities corresponding to those types.
+        :param low_severity: It contains a dictionary with the following keys: 'new_vulnerabilities', 'fixed_vulnerabilities', 'removed_vulnerabilities', 'revoked_fixed_vulnerabilities', 'revoked_removed_vulnerabilities', 'kept_vulnerabilities' and 'total'. The values are low severity vulnerabilities corresponding to those types.
         :type low_severity: int
 
         :param has_config_file: It indicates if in the commit it is present the Dependabot configuration file.

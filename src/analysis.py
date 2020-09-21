@@ -36,7 +36,7 @@ def main():
 
         # Iterate over each repository present in repos.csv
         for i in range(repos_csv.shape[0]):
-            print_current_time()
+            print_current_time("Started")
             github_url = repos_csv['github_link'][i]
             repo_owner = github_url.split('/')[3]
             repo_name = github_url.split('/')[4]
@@ -45,18 +45,21 @@ def main():
             print("------------------------------------------------------------------")
             print("~~ INFO:Analyzing evolution of vulnerable dependencies from '" + repo_owner + "/" + repo_name + "'")
 
-            repo = clone_repo(repo_name, repo_owner, current_directory)
+            repo = clone_repo(repo_name, repo_owner, current_directory, repos_csv['id'][i])
+            if repo is not False:
+                flipped_commit_list = []
+                for commit in list(repo.iter_commits()):
+                    flipped_commit_list.insert(0, commit)
+                # Iterate over each commit
+                for commit in flipped_commit_list:  # if we want the 1000 first commits -> (repo.iter_commits('master', max_count=1000)
 
-            # Iterate over each commit
-            for commit in list(repo.iter_commits()):  # if we want the 1000 first commits -> (repo.iter_commits('master', max_count=1000)
+                    print("\n       * Commit: '" + commit.hexsha + "'")
+                    if previous_commit is 0 or diff_in_dependencies(commit, previous_commit):
+                        prepare_commit_environment(repo, commit)
+                        # Vulnerabilities are collected and classified.
+                        total_commit_dependencies = set_npm_and_yarn_dependencies()
 
-                print("\n       * Commit: '" + commit.hexsha + "'")
-                if previous_commit is 0 or diff_in_dependencies(commit, previous_commit):
-                    prepare_commit_environment(repo, commit)
-                    # Vulnerabilities are collected and classified.
-                    total_commit_dependencies = set_npm_and_yarn_dependencies()
-
-                    record_point(InfluxPoint(
+                        record_point(InfluxPoint(
                                               repos_csv['id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha
@@ -75,17 +78,14 @@ def main():
                                             , write_api
                                             , bucket
                                             , org)
-
-                    previous_commit = commit
-
-
-                else:
-                    print("         ~~ INFO:Dependencies have not changed. ")
-
-
-
+                        previous_commit = commit
+                    else:
+                        print("         ~~ INFO:Dependencies have not changed. ")
+                    print_current_time("Stopped")
     except:
+        print_current_time("Failed")
         write_failed_repos_log(repos_csv['id'][i], github_url)
+        pass
 
 
 if __name__ == "__main__":

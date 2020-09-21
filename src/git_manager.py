@@ -1,5 +1,7 @@
 from git import Repo
 
+from src.helpers import write_failed_repos_log, print_current_time
+
 
 def diff_in_dependencies(current_commit, previous_commit):
     """ It compares the current commit with the previous. To check if'package.json',
@@ -27,7 +29,7 @@ def diff_in_dependencies(current_commit, previous_commit):
     return False
 
 
-def clone_repo(name, owner, directory):
+def clone_repo(name, owner, directory, id):
     """ To clone repository into '/cloned_git'
 
     :param name: Repository name.
@@ -44,8 +46,15 @@ def clone_repo(name, owner, directory):
     """
     print("\n~~ INFO:Cloning '" + owner + "/" + name + ".git' into '" + directory[:-3] + "cloned_git'")
 
-    return Repo.clone_from(
+    try:
+        repo = Repo.clone_from(
         url="https://github.com/" + owner + "/" + name,
         to_path="../cloned_git",
         no_checkout=True
-    )
+        )
+        return repo
+    except:
+        print_current_time("Failed")
+        write_failed_repos_log(id, "https://github.com/" + owner + "/" + name)
+        return False
+        pass

@@ -12,4 +12,4 @@ Source code
 .. literalinclude:: ../../src/dependencies_manager.py
    :language: python
    :linenos:
-   :lines: 8-253
+   :lines: 8-483

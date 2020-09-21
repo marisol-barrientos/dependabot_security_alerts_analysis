@@ -1,163 +1,35 @@
 
 ~~ INFO:Reading repositories presented in '../input/repos.csv' ...
-Started recording - 2020-09-09 03:49:43
+Started recording - 2020-09-21 17:29:57
 ------------------------------------------------------------------
-~~ INFO:Analyzing evolution of vulnerable dependencies from 'grimpio/website-backend'
+~~ INFO:Analyzing evolution of vulnerable dependencies from 'Morglod/project-watcher'
 
-~~ INFO:Cloning 'grimpio/website-backend.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
+~~ INFO:Cloning 'Morglod/project-watcher.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
 
-       * Commit: '096da83ab90142fed5bfd30db57a3c28282b620b'
-         - Commited date:'2020-01-30 08:24:29'
-         - Repository id: '235354561'
-         - Commit author: 'grimpio'
-         - Repo name: 'website-backend'
-         - Repo owner: 'grimpio'
-         - Total number of dependencies: 1242
+       * Commit: '468818b744e02783e8f4869d15257b84947d2451'
+         - Commited date:'2018-03-09 11:10:13'
+         - Repository id: '129098389'
+         - Commit author: 'morglod'
+         - Repo name: 'project-watcher'
+         - Repo owner: 'Morglod'
+         - Total number of dependencies: 105
          - Dependabot configuration file: 'False'
-         - Email address: 'arnaudjeannin@outlook.com'
-         - Commit message: 'Rename Cta Content
+         - Email address: 'morglod@gmail.com'
+         - Commit message: 'Init; Debugging
 
-         - Total number of vulnerabilities: {'new_vulnerabilities': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [], 'total': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529]}
+         - Total number of vulnerabilities: {'new_vulnerabilities': [945, 969, 491, 670, 668], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [], 'total': [945, 969, 491, 670, 668]}
          - Critical severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
-         - High severity: {'new_vulnerabilities': [953, 463, 1003, 1002, 515, 639, 670, 867, 880, 452, 668], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
-         - Moderate severity: {'new_vulnerabilities': [551, 524, 518, 811, 847, 889, 562, 529], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
-         - Low severity: {'new_vulnerabilities': [491, 475], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
+         - High severity: {'new_vulnerabilities': [670, 668], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
+         - Moderate severity: {'new_vulnerabilities': [945], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
+         - Low severity: {'new_vulnerabilities': [969, 491], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
 
          ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
-
-       * Commit: '9007d1b9618da975112cbed8c324ce9f0f324d8e'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'de77194f7aa78c285afbb0d459b70fd98605cfcd'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'a2021545aebb56a4a88e9e37705303c37797d1e2'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'fd05e854f937ede93a8b53770e3ee3e2787c7881'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'cd1ccff426a31f8d15eab8ecc5522c54185b1197'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '2e2449205ca2aeab7c7aeedcba85530c689f12f8'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'd213922d183cf274af28b48cc27691ce6fa15c66'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'd17dcaa7df411d34ba3e39b6518a56cb8615a714'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'b7060182213d748a65e08e5d846d9fcaf6e4d776'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'dfd05a9a6f1175c093ed9f591725f32a44f9a607'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '0ba6da3bc5d1263e2ed3d9c6d87a504576f2619a'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'cc5e396a5fac9bdc18d757df895dad2302a8be64'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'ca75e63c302dd1b09033044ee45e5dbd0a9229e0'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'a846bc319b9ca64982e84c16cecf742a15d1af8b'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'f5be6d5d8eecb4d933e5e8b9b10c826c9c25dbf3'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '77f0a1a4a8f2aaea48969edf92b247f014631fc5'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'ba9a28116c617f68e91e9e42987830bf654dd4e0'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '8bd0261c419c02ea4afa80a406cbb40c078cb78b'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '00c33fa9b2a01b3d3f458da85dc79b746b6a8e37'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '95fd0aa5432571deff62c6115989e62e679ec991'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '895987781052277d4f656b43d5674107265da994'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'd46e8eb8bd11d4b13ec25cb4a630ec7ddbd988f8'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'bac602d371f5e63179ee6b7f5767945911eaf56e'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '97943b5c5f41ad41b59abea3640caa6d7fef6225'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '00a0b2d023267b05e50fbcabf805608f9698e329'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '451a71435a8ad85d860359fd651479f2fc213f4c'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '1d3b16bb77a20373e792dc3efbe9599c11b7affa'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'ea2b82b8fd01cd637aeb2e0c5805876369e5658b'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '6068d43ba7dd2596c5935ddec04c763caf9fb7f9'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'e77a1f6549cf37f7495a6f56b7d11afc2eea08c3'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: 'de1b9f24c101d5fbedc9fee9b493445e6e3c1ec4'
-         ~~ INFO:Dependencies have not changed. 
-
-       * Commit: '777b2d735ec08ab96a57943aa28f229332552146'
-         - Commited date:'2020-01-21 08:13:00'
-         - Repository id: '235354561'
-         - Commit author: 'arnaudjnn'
-         - Repo name: 'website-backend'
-         - Repo owner: 'grimpio'
-         - Total number of dependencies: 1228
-         - Dependabot configuration file: 'False'
-         - Email address: 'arnaudjeannin@outlook.com'
-         - Commit message: 'Initial Commit
-
-         - Total number of vulnerabilities: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529], 'total': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529]}
-         - Critical severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
-         - High severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [953, 463, 1003, 1002, 515, 639, 670, 867, 880, 452, 668]}
-         - Moderate severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [551, 524, 518, 811, 847, 889, 562, 529]}
-         - Low severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [491, 475]}
-
-         ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
-
-       * Commit: '67fa92dee74b9d357a0cc621125279eefd35fafb'
-         - Commited date:'2020-01-21 07:37:53'
-         - Repository id: '235354561'
-         - Commit author: 'arnaudjnn'
-         - Repo name: 'website-backend'
-         - Repo owner: 'grimpio'
-         - Total number of dependencies: 1222
-         - Dependabot configuration file: 'False'
-         - Email address: 'arnaudjeannin@outlook.com'
-         - Commit message: 'Initial Commit
-
-         - Total number of vulnerabilities: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529], 'total': [551, 524, 518, 953, 463, 811, 1003, 1002, 515, 847, 889, 491, 639, 475, 562, 670, 867, 880, 452, 668, 529]}
-         - Critical severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': []}
-         - High severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [953, 463, 1003, 1002, 515, 639, 670, 867, 880, 452, 668]}
-         - Moderate severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [551, 524, 518, 811, 847, 889, 562, 529]}
-         - Low severity: {'new_vulnerabilities': [], 'fixed_vulnerabilities': [], 'removed_vulnerabilities': [], 'revoked_fixed_vulnerabilities': [], 'revoked_removed_vulnerabilities': [], 'kept_vulnerabilities': [491, 475]}
-
-         ~~ INFO:Writing point into 'meerschweinchenseminar's Bucket' ...
-
-       * Commit: '0c8b6ec10671cc87e00ba353d1e37df05d76b9f7'
+Failed recording - 2020-09-21 17:30:00
 Error: 
-<class 'KeyboardInterrupt'>
+<class 'influxdb_client.rest.ApiException'>
 Error: 
+(429)
+Reason: Too Many Requests
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 21 Sep 2020 15:30:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-platform-error-code': 'cardinality limitation', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains'})
+HTTP response body: {"code":"cardinality limitation","message":"org 07b4788fda7bb8ca has exceeded plan cardinality limit"}
 

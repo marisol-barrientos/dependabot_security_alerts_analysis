@@ -14,6 +14,7 @@ def prepare_repo_environment():
     dependencies_manager.total_commit_vulnerabilities.clear()
     dependencies_manager.vulnerabilities_log.clear()
     dependencies_manager.historial_fixes.clear()
+    dependencies_manager.removed_vulnerabilities_historial.clear()
     directories_manager.new_cloned_git_folder()
 
 
@@ -52,15 +53,25 @@ def has_config_file(repo, commit):
     return False
 
 
-def print_current_time():
+def print_current_time(state):
     """ It prints current time.
+    :param state: It indicates if it has started o stopped recording.
+    :type state: str
     """
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
-    print("Started recording - " + current_time)
+    print(state +" recording - " + current_time)
 
 
 def write_failed_repos_log(repo_id, repo_url):
+    """ It records ID and url of repositories that were not downloaded properly.
+
+    :param repo_id: Repository ID.
+    :type repo_id: int
+
+    :param repo_url: Repository url.
+    :type repo_url: str
+    """
     with open('../output/failed_repos.txt', 'a') as f1:
         failed_repo = str(repo_id) + "-" + repo_url
         f1.write(failed_repo + os.linesep)
