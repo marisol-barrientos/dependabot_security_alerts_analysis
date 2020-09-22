@@ -25,8 +25,7 @@ with open('../config.yaml') as config_file:
 
 
 current_directory = os.getcwd()
-manager = db_manager
-write_api = manager.open_connection(client, token)
+
 
 
 def main():
@@ -75,7 +74,6 @@ def main():
                                             , has_config_file(repo, commit)
                                             , commit.author.email
                                             , commit.message)
-                                            , write_api
                                             , bucket
                                             , org)
                         previous_commit = commit
