@@ -1,5 +1,8 @@
 # Dependabot Security Alerts Analyzer
-TODO:Fill README and connect with Read the docs
+TODO:
+1. Fill README 
+2. Write Set Up
+3. Update Read the docs
 
 https://dependabot-security-alerts-analysis.readthedocs.io/en/latest/
 
