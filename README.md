@@ -3,7 +3,7 @@ The analyzer is tool is to provide a workable way to see the evolution that the 
 The source code is described in its [wiki](https://dependabot-security-alerts-analysis.readthedocs.io/en/latest/).
 
 # Setup
-To work with the analyzer you have to download the GitHubs project and execute in the pip console the following commands:
+To work with the analyzer you have to download the GitHub's project and execute in the pip console the following commands:
 ```
 pip install pandas
 pip install influxdb
