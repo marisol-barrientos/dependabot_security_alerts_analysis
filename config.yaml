@@ -4,3 +4,4 @@ token : 'SisUr38ou74bOFTLM9i-pq-zilr9BDTcSsE8j49gyHE2fR9LFu83uQyrjrBQ8OTS6kURCrm
 org : 'meerschweinchenseminar@gmail.com'
 bucket : "meerschweinchenseminar's Bucket"
 client : 'https://eu-central-1-1.aws.cloud2.influxdata.com'
+recorded_commits : '../input/recorded_commits.csv'

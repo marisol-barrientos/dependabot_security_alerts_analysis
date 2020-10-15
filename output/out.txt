@@ -1,0 +1,19 @@
+
+~~ INFO:Reading repositories presented in '../input/repos.csv' ...
+Started recording - 2020-10-15 02:14:57
+------------------------------------------------------------------
+~~ INFO:Analyzing evolution of vulnerable dependencies from 'qwexvf/playground'
+
+~~ INFO:Cloning 'qwexvf/playground.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'
+
+       * Commit: '5d2984e3abbaaf1800b8b30f48c183a66f753095'
+Failed recording - 2020-10-15 02:15:01
+Error: 
+<class 'KeyboardInterrupt'>
+Error: 
+
+Started recording - 2020-10-15 02:15:01
+------------------------------------------------------------------
+~~ INFO:Analyzing evolution of vulnerable dependencies from 'hamedasemi/gulp-font'
+
+~~ INFO:Cloning 'hamedasemi/gulp-font.git' into '/home/ms28/Desktop/TFG/Documentation/dependabot_security_alerts_analysis/cloned_git'

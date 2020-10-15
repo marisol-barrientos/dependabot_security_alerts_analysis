@@ -93,12 +93,12 @@ class InfluxPoint:
                "\n         - Commit author: '" + str(self.commit_author) + "'" + \
                "\n         - Repo name: '" + self.repo_name + "'" + \
                "\n         - Repo owner: '" + self.repo_owner + "'" + \
-               "\n         - Total number of dependencies: " + str(self.total_commit_dependencies) + \
-               "\n         - Dependabot configuration file: '" + str(self.has_config_file) + "'" + \
-               "\n         - Email address: '" + str(self.email) + "'" + \
-               "\n         - Commit message: '" + self.commit_message.title() + \
-               "\n         - Total number of vulnerabilities: " + str(self.summary) + \
-               "\n         - Critical severity: " + str(self.critical_severity) + \
-               "\n         - High severity: " + str(self.high_severity) + \
-               "\n         - Moderate severity: " + str(self.moderate_severity) + \
-               "\n         - Low severity: " + str(self.low_severity)
+               "\n         - Total number of dependencies: " + str(self.total_commit_dependencies) 
+              # "\n         - Dependabot configuration file: '" + str(self.has_config_file) + "'" + \
+              # "\n         - Email address: '" + str(self.email) + "'" + \
+              # "\n         - Commit message: '" + self.commit_message.title() + \
+              # "\n         - Total number of vulnerabilities: " + str(self.summary) + \
+              # "\n         - Critical severity: " + str(self.critical_severity) + \
+              # "\n         - High severity: " + str(self.high_severity) + \
+              #  "\n         - Moderate severity: " + str(self.moderate_severity) + \
+              #  "\n         - Low severity: " + str(self.low_severity)

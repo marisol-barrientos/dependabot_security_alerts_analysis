@@ -6,6 +6,10 @@ import pandas as pd
 from datetime import datetime
 import time
 
+
+import github
+from github import Github, InputGitTreeElement
+
 from src import db_manager
 from src.db_manager import record_point
 from src.db_point import InfluxPoint
@@ -44,21 +48,31 @@ def main():
             print("------------------------------------------------------------------")
             print("~~ INFO:Analyzing evolution of vulnerable dependencies from '" + repo_owner + "/" + repo_name + "'")
 
-            repo = clone_repo(repo_name, repo_owner, current_directory, repos_csv['id'][i])
-            if repo is not False:
-                flipped_commit_list = []
-                for commit in list(repo.iter_commits()):
-                    flipped_commit_list.insert(0, commit)
-                # Iterate over each commit
-                for commit in flipped_commit_list:  # if we want the 1000 first commits -> (repo.iter_commits('master', max_count=1000)
+            # First create a Github instance:
 
-                    print("\n       * Commit: '" + commit.hexsha + "'")
-                    if previous_commit is 0 or diff_in_dependencies(commit, previous_commit):
-                        prepare_commit_environment(repo, commit)
-                        # Vulnerabilities are collected and classified.
-                        total_commit_dependencies = set_npm_and_yarn_dependencies()
+            # using username and password
+            g = Github("meerschweinchen-seminar", "H5Q7UAuniGnrnAt")
 
-                        record_point(InfluxPoint(
+            try:
+                repo = g.get_repo(repo_owner + "/" +  repo_name)
+
+                if repo.get_commits().totalCount < 30:
+
+                    repo = clone_repo(repo_name, repo_owner, current_directory, repos_csv['id'][i])
+                    if repo is not False:
+                        flipped_commit_list = []
+                    # if len(list(repo.iter_commits())) < 50:
+                        for commit in list(repo.iter_commits()):
+                            flipped_commit_list.insert(0, commit)
+                        # Iterate over each commit
+                        for commit in flipped_commit_list:  # if we want the 1000 first commits -> (repo.iter_commits('master', max_count=1000)
+
+                            print("\n       * Commit: '" + commit.hexsha + "'")
+                            if previous_commit is 0 or diff_in_dependencies(commit, previous_commit):
+                                prepare_commit_environment(repo, commit)
+                                # Vulnerabilities are collected and classified.
+                                total_commit_dependencies = set_npm_and_yarn_dependencies()
+                                record_point(InfluxPoint(
                                               repos_csv['id'][i]
                                             , int(round(time.mktime(datetime.strptime(commit.committed_datetime.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S').timetuple())))
                                             , commit.hexsha
@@ -76,10 +90,21 @@ def main():
                                             , commit.message)
                                             , bucket
                                             , org)
-                        previous_commit = commit
-                    else:
-                        print("         ~~ INFO:Dependencies have not changed. ")
-                    print_current_time("Stopped")
+                                previous_commit = commit
+
+                            else:
+                                print("         ~~ INFO:Dependencies have not changed. ")
+                            print_current_time("Stopped")
+                #else:
+                    #print_current_time("Long")
+                    #write_failed_repos_log(repos_csv['id'][i], github_url)
+                else:
+                    print_current_time("More than 30 commits ")
+                    write_failed_repos_log(repos_csv['id'][i], github_url)
+            except:
+                print_current_time("Failed")
+                write_failed_repos_log(repos_csv['id'][i], github_url)
+                pass
     except:
         print_current_time("Failed")
         write_failed_repos_log(repos_csv['id'][i], github_url)
